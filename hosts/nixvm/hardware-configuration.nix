@@ -2,15 +2,17 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 {
+  inputs,
   config,
   lib,
   pkgs,
   modulesPath,
   ...
 }:
-
 {
-  imports = [ ];
+  imports = [
+    inputs.disko.nixosModules.disko
+  ];
 
   boot.initrd.availableKernelModules = [
     "ata_piix"
@@ -25,6 +27,38 @@
   boot.extraModulePackages = [ ];
 
   swapDevices = [ ];
+
+  disko.devices.disk.main = {
+    # Replace this with the target's WHOLE disk, verified with `lsblk`.
+    # Examples might be /dev/vda or /dev/sda.
+    device = "/dev/sda";
+    type = "disk";
+
+    content = {
+      type = "gpt";
+      partitions = {
+        ESP = {
+          type = "EF00";
+          size = "1G";
+          content = {
+            type = "filesystem";
+            format = "vfat";
+            mountpoint = "/boot";
+            mountOptions = [ "umask=0077" ];
+          };
+        };
+
+        root = {
+          size = "100%";
+          content = {
+            type = "filesystem";
+            format = "ext4";
+            mountpoint = "/";
+          };
+        };
+      };
+    };
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
