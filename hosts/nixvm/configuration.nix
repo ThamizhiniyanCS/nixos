@@ -80,23 +80,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.joker = {
-    isNormalUser = true;
-    initialPassword = "joker";
-    description = "joker";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      tree
-    ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFLXuLWSOdmel6MJaERCcvbg8EbNYUjRJBhyLmZB4kh2 my-nix ssh"
-    ];
-  };
-
   # programs.firefox.enable = true;
 
   # List packages installed in system profile.
