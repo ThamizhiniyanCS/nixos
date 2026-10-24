@@ -2,6 +2,7 @@
 
 {
   lib,
+  pkgs,
   inputs,
   outputs,
   ...
@@ -14,6 +15,7 @@
 
   home-manager = {
     useUserPackages = true;
+    backupFileExtension = "backup";
     extraSpecialArgs = {
       inherit inputs outputs;
     };
@@ -62,4 +64,7 @@
     );
     nixPath = [ "/etc/nix/path" ];
   };
+
+  # Setting fish as default shell globally for all users
+  users.defaultUserShell = pkgs.fish;
 }
