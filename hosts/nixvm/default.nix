@@ -38,6 +38,7 @@
 
 {
   imports = [
+    ./qemu-vm.nix
     ../common
     ./configuration.nix
   ];

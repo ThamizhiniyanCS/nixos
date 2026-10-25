@@ -50,7 +50,17 @@
       nixosConfigurations = {
         nixvm = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/nixvm ];
+          modules = [
+            {
+              virtualisation.vmVariant = {
+                virtualisation = {
+                  memorySize = 8192;
+                  cores = 4;
+                };
+              };
+            }
+            ./hosts/nixvm
+          ];
         };
       };
       homeConfigurations = {
