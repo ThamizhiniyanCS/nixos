@@ -24,11 +24,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    dotfiles = {
+      url = "git+https://github.com/ThamizhiniyanCS/dotfiles.git";
+      flake = false;
+    };
   };
 
   outputs =
     {
       self,
+      dotfiles,
       home-manager,
       nixpkgs,
       ...

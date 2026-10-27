@@ -1,6 +1,7 @@
 {
   imports = [
     ./home.nix
+    ./dotfiles
     ../common
     ../features/cli
     ../features/desktop
@@ -15,6 +16,7 @@
 
     desktop = {
       wayland.enable = true;
+      fonts.enable = true;
     };
   };
 }

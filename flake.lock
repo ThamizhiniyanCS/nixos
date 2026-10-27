@@ -20,6 +20,22 @@
         "type": "github"
       }
     },
+    "dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790184523,
+        "narHash": "sha256-OuoEfyF1eCgDuvekFAZN84KCTibeZK0lfzz6FF2k8J0=",
+        "ref": "refs/heads/main",
+        "rev": "b410b384449ab1327be4441f9c8bbd91a1fb7a9a",
+        "revCount": 7,
+        "type": "git",
+        "url": "https://github.com/ThamizhiniyanCS/dotfiles.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://github.com/ThamizhiniyanCS/dotfiles.git"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -75,6 +91,7 @@
     "root": {
       "inputs": {
         "disko": "disko",
+        "dotfiles": "dotfiles",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable"
