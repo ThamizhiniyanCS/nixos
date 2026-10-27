@@ -89,6 +89,7 @@
     wget
     neovim
     git
+    nautilus
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -111,6 +112,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
   };
 
   programs.fish.enable = true;

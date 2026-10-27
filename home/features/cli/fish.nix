@@ -12,7 +12,6 @@ in
 
   config = mkIf cfg.enable {
     programs.fish = {
-
       enable = true;
       loginShellInit = ''
         set -x NIX_PATH nixpkgs=channel:nixos-unstable
