@@ -14,17 +14,21 @@
     inputs.disko.nixosModules.disko
   ];
 
-  boot.initrd.availableKernelModules = [
-    "ata_piix"
-    "mptspi"
-    "uhci_hcd"
-    "ahci"
-    "sd_mod"
-    "sr_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd = {
+      availableKernelModules = [
+        "ata_piix"
+        "mptspi"
+        "uhci_hcd"
+        "ahci"
+        "sd_mod"
+        "sr_mod"
+      ];
+      kernelModules = [ ];
+    };
+    kernelModules = [ ];
+    extraModulePackages = [ ];
+  };
 
   swapDevices = [ ];
 

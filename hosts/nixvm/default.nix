@@ -41,5 +41,8 @@
     ./qemu-vm.nix
     ../common
     ./configuration.nix
+    ./services
   ];
+
+  extraServices.podman.enable = true;
 }
