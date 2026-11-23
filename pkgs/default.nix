@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   # Define your custom packages here
-  #  my-package = pkgs.callPackage ./my-package {};
+  zellij-ps = pkgs.callPackage ./zellij-ps { };
 }

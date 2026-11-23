@@ -55,6 +55,7 @@
     {
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       overlays = import ./overlays { inherit inputs; };
+      homeManagerModules = import ./modules/home-manager;
       nixosConfigurations = {
         nixvm = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };

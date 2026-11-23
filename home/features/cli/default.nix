@@ -38,6 +38,7 @@
   home.packages = with pkgs; [
     coreutils
     fd
+    gcc
     htop
     httpie
     jq
