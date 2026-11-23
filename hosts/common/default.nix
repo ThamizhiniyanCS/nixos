@@ -47,24 +47,31 @@
     };
   };
 
-  nix = {
-    settings = {
-      experimental-features = [ "nix-command flakes" ];
-      trusted-users = [
-        "root"
-        "joker"
-      ]; # Set users that are allowed to use the flake command
+  nix =
+    let
+      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+    in
+    {
+      settings = {
+        experimental-features = [ "nix-command flakes" ];
+        trusted-users = [
+          "root"
+          "joker"
+        ]; # Set users that are allowed to use the flake command
+      };
+      gc = {
+        automatic = true;
+        options = "--delete-older-than 30d";
+      };
+      optimise.automatic = true;
+      registry = (lib.mapAttrs (_: flake: { inherit flake; })) (
+        (lib.filterAttrs (_: lib.isType "flake")) inputs
+      );
+      nixPath = [
+        "/etc/nix/path"
+      ]
+      ++ lib.mapAttrsToList (flakeName: _: "${flakeName}=flake:${flakeName}") flakeInputs;
     };
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 30d";
-    };
-    optimise.automatic = true;
-    registry = (lib.mapAttrs (_: flake: { inherit flake; })) (
-      (lib.filterAttrs (_: lib.isType "flake")) inputs
-    );
-    nixPath = [ "/etc/nix/path" ];
-  };
 
   # Setting fish as default shell globally for all users
   users.defaultUserShell = pkgs.fish;

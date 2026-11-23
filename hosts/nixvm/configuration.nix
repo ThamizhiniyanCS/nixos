@@ -21,6 +21,7 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+    enableContainers = true;
   };
 
   networking.hostName = "nixvm"; # Define your hostname.

@@ -1,3 +1,6 @@
 {
-  imports = [ ./echo.nix ];
+  imports = [
+    ./echo.nix
+    ./httpd.nix
+  ];
 }
