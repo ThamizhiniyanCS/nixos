@@ -41,6 +41,7 @@
     ./qemu-vm.nix
     ../common
     ./configuration.nix
+    ./secrets.nix
     ./services
   ];
 
